@@ -51,4 +51,31 @@ T* mergeN(const T* const* a, size_t sa, const size_t* sai, T* c)
     }
   }
   return c + totalSize;
+};
+
+template< class T >
+void printArray(const T* arr, size_t size) {
+    for (size_t i = 0; i < size; ++i) {
+        std::cout << arr[i] << " ";
+    }
+    std::cout << "\n";
+}
+
+int main()
+{
+  int arr1[] = {1, 5, 9, 13};
+  int arr2[] = {2, 6, 10};
+  int arr3[] = {3, 7};
+
+  printArray(arr1, 4);
+  printArray(arr2, 3);
+  printArray(arr3, 2);
+
+  const int* arrays[] = {arr1, arr2, arr3};
+  size_t sizes[] = {4, 3, 2};
+  int result[9];
+  
+  mergeN(arrays, 3, sizes, result);
+  printArray(result, 9);
+  return 0;
 }
